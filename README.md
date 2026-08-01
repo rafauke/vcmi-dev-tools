@@ -67,6 +67,8 @@ uv run vcmi-conflux-inventory \
 The command records referenced bitmap and DEF resources, dimensions, DEF
 groups, frame order, offsets and archive availability. It does not extract or
 write copyrighted image data, hashes or local filesystem paths to the manifest.
+See `docs/conflux-hd-resource-format.md` for the verified VCMI 1.7.4 bitmap and
+DEF-frame override conventions.
 
 The reviewed initial vertical slice is stored in
 `manifests/conflux-vertical-slice.json`. Extract its source files into an
@@ -98,11 +100,11 @@ uv run vcmi-conflux-comfy-upscale \
 The output directory must be new. The command records every submitted API
 workflow and input/output hash for a reproducible comparison.
 
-Pack upscaled DEF frame sets into lossless VCMI D32 files and verify them by
-decoding every frame again:
+Export upscaled DEF frames as loose HD PNGs using the internal frame names that
+VCMI resolves from the original DEF:
 
 ```bash
-uv run vcmi-conflux-pack \
+uv run vcmi-conflux-export \
   --metadata /path/to/extracted/metadata.json \
   --upscaled /path/to/upscale-run/x2 \
   --output /path/to/mod/content/Data2x

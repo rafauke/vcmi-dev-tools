@@ -15,7 +15,7 @@ vcmi-portraits = "vcmi_portrait_tools.cli:main"
 vcmi-conflux-inventory = "vcmi_dev_tools.conflux_inventory:main"
 vcmi-conflux-extract = "vcmi_dev_tools.conflux_extract:main"
 vcmi-conflux-comfy-upscale = "vcmi_dev_tools.conflux_comfy_upscale:main"
-vcmi-conflux-pack = "vcmi_dev_tools.conflux_pack:main"
+vcmi-conflux-export = "vcmi_dev_tools.conflux_export:main"
 
 [build-system]
 requires = ["hatchling"]
