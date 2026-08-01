@@ -51,3 +51,19 @@ The reviewed initial roster and release grouping for this mod lives in
 `manifests/hd-expansion-portraits.json`. Restoration of Erathia is conditional
 on finding any uncovered campaign resources; Heroes Chronicles is deliberately
 listed as future scope rather than mixed into the initial 33 resources.
+
+## Conflux town remaster inventory
+
+Generate a public-safe manifest from VCMI's Conflux faction configuration and
+the locally installed original game archives:
+
+```bash
+uv run vcmi-conflux-inventory \
+  --config /path/to/vcmi/config/factions/conflux.json \
+  --data-dir /path/to/original-game/Data \
+  --output manifests/conflux-town-resources.json
+```
+
+The command records referenced bitmap and DEF resources, dimensions, DEF
+groups, frame order, offsets and archive availability. It does not extract or
+write copyrighted image data, hashes or local filesystem paths to the manifest.

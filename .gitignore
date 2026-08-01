@@ -6,8 +6,11 @@ __pycache__/
 .env.*
 !.env.example
 asset-dump/
+extracted/
+local-assets/
 runs/
+work/
 *.pak
+*.lod
 *.ckpt
 *.safetensors
-
