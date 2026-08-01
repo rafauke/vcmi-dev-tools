@@ -48,5 +48,6 @@ Existing files with the same names are replaced. Review the generated images
 and the Git diff in the target mod before committing them.
 
 The reviewed initial roster and release grouping for this mod lives in
-`manifests/hd-expansion-portraits.json`. Heroes Chronicles is deliberately
+`manifests/hd-expansion-portraits.json`. Restoration of Erathia is conditional
+on finding any uncovered campaign resources; Heroes Chronicles is deliberately
 listed as future scope rather than mixed into the initial 33 resources.

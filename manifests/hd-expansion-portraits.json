@@ -36,7 +36,7 @@
     {"slug": "gem", "name": "Gem", "resource": "134NC", "release": "shadow-of-death"},
     {"slug": "sandro", "name": "Sandro", "resource": "135WI", "release": "shadow-of-death"},
     {"slug": "yog", "name": "Yog", "resource": "136WI", "release": "shadow-of-death"},
-    {"slug": "roland", "name": "Roland", "resource": "009SH", "release": "restoration-of-erathia"}
+    {"slug": "roland", "name": "Roland", "resource": "009SH", "release": "armageddons-blade"}
   ],
-  "futureScope": ["heroes-chronicles"]
+  "futureScope": ["restoration-of-erathia-if-uncovered", "heroes-chronicles"]
 }

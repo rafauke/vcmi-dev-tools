@@ -20,9 +20,8 @@ class ManifestTests(unittest.TestCase):
         self.assertEqual(
             Counter(hero["release"] for hero in heroes),
             {
-                "armageddons-blade": 27,
+                "armageddons-blade": 28,
                 "shadow-of-death": 5,
-                "restoration-of-erathia": 1,
             },
         )
 
