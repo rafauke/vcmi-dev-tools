@@ -50,9 +50,30 @@ def safe_stem(value: str) -> str:
 
 def extract_bitmap(data: bytes, destination: Path) -> dict[str, Any]:
     image = pcxfile.read_pcx(data)
+    source_mode = image.mode
+    transparency = None
+    if image.mode == "P":
+        palette = image.getpalette()
+        is_cyan_key = palette and all(
+            abs(actual - expected) < 8
+            for actual, expected in zip(palette[:3], (0, 255, 255))
+        )
+        if is_cyan_key:
+            # VCMI treats palette index 0 / cyan as transparent. PNG needs an
+            # explicit alpha channel or an upscaler will turn the key color
+            # into visible cyan and blend it into the artwork's edge.
+            image.info["transparency"] = 0
+            image = image.convert("RGBA")
+            transparency = "palette-index-0"
     destination.parent.mkdir(parents=True, exist_ok=True)
     image.save(destination)
-    return {"width": image.width, "height": image.height, "mode": image.mode}
+    return {
+        "width": image.width,
+        "height": image.height,
+        "sourceMode": source_mode,
+        "outputMode": image.mode,
+        "transparency": transparency,
+    }
 
 
 def extract_def(data: bytes, destination: Path) -> dict[str, Any]:
