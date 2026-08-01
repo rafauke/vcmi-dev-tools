@@ -81,3 +81,18 @@ uv run vcmi-conflux-extract \
 
 The local output contains decoded PNGs and reconstruction metadata, including
 source hashes and complete DEF frame offsets. Never commit that output.
+
+With ComfyUI running, upscale the extracted flat input batch through a named
+PyTorch upscale model and derive exact 2x candidates with preserved alpha:
+
+```bash
+uv run vcmi-conflux-comfy-upscale \
+  --input /path/to/flat-input \
+  --output /path/to/local-run \
+  --model 4x_NMKD-Siax_200k.pth \
+  --comfy-input /path/to/ComfyUI/input \
+  --comfy-output /path/to/ComfyUI/output
+```
+
+The output directory must be new. The command records every submitted API
+workflow and input/output hash for a reproducible comparison.
