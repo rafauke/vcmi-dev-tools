@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "project": "conflux-hd",
+  "purpose": "Adventure-map Conflux town test",
+  "resources": [
+    {"archiveEntry": "avchfor0.def", "runtimeName": "AVCHFOR0.def", "role": "Village map object"},
+    {"archiveEntry": "avchforx.def", "runtimeName": "AVCHFORX.def", "role": "Fortified map object"},
+    {"archiveEntry": "avchforz.def", "runtimeName": "AVCHFORZ.def", "role": "Capitol map object"}
+  ]
+}

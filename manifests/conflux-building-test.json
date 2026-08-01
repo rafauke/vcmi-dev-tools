@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "project": "conflux-hd",
+  "purpose": "Expanded static-building in-game test",
+  "resources": [
+    {"archiveEntry": "tbeltvrn.def", "runtimeName": "TBELTVRN.def", "role": "Tavern"},
+    {"archiveEntry": "tbelmark.def", "runtimeName": "TBELMARK.def", "role": "Marketplace"},
+    {"archiveEntry": "tbelmage.def", "runtimeName": "TBELMAGE.def", "role": "Mage Guild level 1"},
+    {"archiveEntry": "tbelhall.def", "runtimeName": "TBELHALL.def", "role": "Village Hall"},
+    {"archiveEntry": "tbelhal4.def", "runtimeName": "TBELHAL4.def", "role": "Capitol"},
+    {"archiveEntry": "tbelcstl.def", "runtimeName": "TBELCSTL.def", "role": "Fort"},
+    {"archiveEntry": "tbelcas2.def", "runtimeName": "TBELCAS2.def", "role": "Citadel"},
+    {"archiveEntry": "tbelcas3.def", "runtimeName": "TBELCAS3.def", "role": "Castle"}
+  ]
+}

@@ -97,3 +97,13 @@ uv run vcmi-conflux-comfy-upscale \
 
 The output directory must be new. The command records every submitted API
 workflow and input/output hash for a reproducible comparison.
+
+Pack upscaled DEF frame sets into lossless VCMI D32 files and verify them by
+decoding every frame again:
+
+```bash
+uv run vcmi-conflux-pack \
+  --metadata /path/to/extracted/metadata.json \
+  --upscaled /path/to/upscale-run/x2 \
+  --output /path/to/mod/content/Data2x
+```
