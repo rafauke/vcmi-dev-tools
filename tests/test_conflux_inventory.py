@@ -1,5 +1,8 @@
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
+from vcmi_dev_tools.conflux_extract import load_selection
 from vcmi_dev_tools.conflux_inventory import archive_name, collect_references
 
 
@@ -34,7 +37,17 @@ class ConfluxInventoryTests(unittest.TestCase):
             ["mageGuild1", "mageGuild2"],
         )
 
+    def test_validates_extraction_selection(self) -> None:
+        with TemporaryDirectory() as temporary:
+            path = Path(temporary) / "selection.json"
+            path.write_text(
+                '{"resources": [{"archiveEntry": "TBELTVRN.DEF", '
+                '"runtimeName": "TBELTVRN.def", "role": "building"}]}',
+                encoding="utf-8",
+            )
+            selection = load_selection(path)
+        self.assertEqual(selection[0]["archiveEntry"], "tbeltvrn.def")
+
 
 if __name__ == "__main__":
     unittest.main()
-

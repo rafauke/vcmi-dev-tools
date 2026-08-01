@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "project": "conflux-hd",
+  "purpose": "Data2x vertical slice",
+  "resources": [
+    {
+      "archiveEntry": "tbelback.pcx",
+      "runtimeName": "TBELBACK.png",
+      "role": "town background"
+    },
+    {
+      "archiveEntry": "tbeltvrn.def",
+      "runtimeName": "TBELTVRN.def",
+      "role": "representative static building"
+    },
+    {
+      "archiveEntry": "tbeldw_0.def",
+      "runtimeName": "TBELDW_0.def",
+      "role": "representative animated building"
+    },
+    {
+      "archiveEntry": "tpmageel.pcx",
+      "runtimeName": "TPMAGEEL.png",
+      "role": "town interface element"
+    }
+  ]
+}

@@ -67,3 +67,17 @@ uv run vcmi-conflux-inventory \
 The command records referenced bitmap and DEF resources, dimensions, DEF
 groups, frame order, offsets and archive availability. It does not extract or
 write copyrighted image data, hashes or local filesystem paths to the manifest.
+
+The reviewed initial vertical slice is stored in
+`manifests/conflux-vertical-slice.json`. Extract its source files into an
+ignored local workspace with:
+
+```bash
+uv run vcmi-conflux-extract \
+  --selection manifests/conflux-vertical-slice.json \
+  --data-dir /path/to/original-game/Data \
+  --output /path/to/local-assets/conflux-hd/vertical-slice-original
+```
+
+The local output contains decoded PNGs and reconstruction metadata, including
+source hashes and complete DEF frame offsets. Never commit that output.
