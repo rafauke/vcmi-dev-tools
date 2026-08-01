@@ -83,7 +83,8 @@ The local output contains decoded PNGs and reconstruction metadata, including
 source hashes and complete DEF frame offsets. Never commit that output.
 
 With ComfyUI running, upscale the extracted flat input batch through a named
-PyTorch upscale model and derive exact 2x candidates with preserved alpha:
+PyTorch upscale model and derive exact 2x, 3x and 4x candidates with preserved
+alpha:
 
 ```bash
 uv run vcmi-conflux-comfy-upscale \

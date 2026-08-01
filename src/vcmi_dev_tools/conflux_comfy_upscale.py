@@ -105,7 +105,7 @@ def main() -> None:
     run_id = f"conflux-{args.output.name}-{uuid.uuid4().hex[:8]}"
     staged = args.comfy_input / run_id
     staged.mkdir(parents=True)
-    for folder in ("workflows", "x4", "x2"):
+    for folder in ("workflows", "x2", "x3", "x4"):
         (args.output / folder).mkdir(parents=True)
 
     records = []
@@ -132,18 +132,27 @@ def main() -> None:
             x4 = restore_alpha(source, raw_x4)
             x4_path = args.output / "x4" / source_path.name
             x4.save(x4_path)
-            x2_raw = x4.resize(
-                (source.width * 2, source.height * 2), Image.Resampling.LANCZOS
-            )
-            x2 = restore_alpha(source, x2_raw)
-            x2_path = args.output / "x2" / source_path.name
-            x2.save(x2_path)
+            scaled_paths = {4: x4_path}
+            for scale in (2, 3):
+                scaled_raw = x4.resize(
+                    (source.width * scale, source.height * scale),
+                    Image.Resampling.LANCZOS,
+                )
+                scaled = restore_alpha(source, scaled_raw)
+                scaled_path = args.output / f"x{scale}" / source_path.name
+                scaled.save(scaled_path)
+                scaled_paths[scale] = scaled_path
         records.append(
             {
                 "file": source_path.name,
                 "sourceSha256": digest(source_path),
-                "x4Sha256": digest(x4_path),
-                "x2Sha256": digest(x2_path),
+                "outputs": {
+                    f"x{scale}": {
+                        "sha256": digest(path),
+                        "size": [source.width * scale, source.height * scale],
+                    }
+                    for scale, path in sorted(scaled_paths.items())
+                },
                 "workflow": f"workflows/{source_path.stem}.api.json",
             }
         )
@@ -154,7 +163,7 @@ def main() -> None:
         "createdAt": datetime.now(timezone.utc).isoformat(),
         "backend": "ComfyUI local API",
         "model": args.model,
-        "targetScale": 2,
+        "targetScales": [2, 3, 4],
         "masterScale": 4,
         "alpha": "source alpha scaled and clipped to scaled source bounds",
         "resources": records,
